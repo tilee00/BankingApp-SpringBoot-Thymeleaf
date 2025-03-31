@@ -35,8 +35,8 @@ public class SecurityConfig {
             // CSRF is enabled by default in Spring Security to protect against CSRF attacks
             // in this case, we are disabling it for simplicity
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/register").permitAll() // allow access to these endpoints without authentication
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/styles/**","/register").permitAll() // allow access to these endpoints without authentication
                 .anyRequest().authenticated() // require authentication for any other request
             )
             .formLogin(form -> form

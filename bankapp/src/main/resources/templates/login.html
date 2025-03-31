@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bank Application Login</title>
+        <link rel="stylesheet" href="/styles/login.css">
+    </head>
+    <body>
+        <div class="login_container">
+            <h1>Welcome to the ABC Bank Application</h1>
+            <h2>Login</h2>
+            <form th:action="@{/login}" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="username">Username:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="username" name="username" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">Password:</label>
+                        </td>
+                        <td>
+                            <input type="password" id="password" name="password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <!-- colspan specifies that the cell should span across two columns in the table-->
+                            <button type="submit">Login</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Don't have an account? <a href="/register">Register Here!</a></p>
+                        </td>
+                    </tr>
+                </table>
+                <div th:if="${param.error}">
+                    <p style="color: red;">Invalid username or password.</p>
+            </form>
+        </div>
+    </body>

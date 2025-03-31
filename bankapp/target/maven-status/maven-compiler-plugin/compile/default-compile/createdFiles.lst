@@ -1,8 +1,8 @@
 com/springboot/bankapp/model/Transaction.class
-com/springboot/bankapp/repository/AccountRepository.class
 com/springboot/bankapp/repository/TransactionRepository.class
 com/springboot/bankapp/service/AccountService.class
 com/springboot/bankapp/config/SecurityConfig.class
 com/springboot/bankapp/BankappApplication.class
 com/springboot/bankapp/controller/BankController.class
+com/springboot/bankapp/repository/AccountRepository.class
 com/springboot/bankapp/model/Account.class
