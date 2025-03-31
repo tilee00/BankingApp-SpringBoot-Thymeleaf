@@ -2,9 +2,16 @@ package com.springboot.bankapp.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +55,7 @@ public class AccountService implements UserDetailsService{
         accountRepository.save(account);
 
         Transaction transaction = new Transaction(
-            amount, "DEPOSIT", LocalDateTime.now(), account);
+            amount, "Deposit", LocalDateTime.now(), account);
 
         transactionRepository.save(transaction);
     }
@@ -63,8 +70,58 @@ public class AccountService implements UserDetailsService{
         accountRepository.save(account);
 
         Transaction transaction = new Transaction(
-            amount, "WITHDRAW", LocalDateTime.now(), account);
+            amount, "Withdrawal", LocalDateTime.now(), account);
         transactionRepository.save(transaction);
     }
 
+    public List<Transaction> getTransactionHistory(Account account){
+        return transactionRepository.findByAccountId(account.getId());
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+        Account account = findAccountByUsername(username);
+        if(account == null){
+            throw new UsernameNotFoundException("Username or Password not found");
+        }        
+
+        return new Account(
+            account.getUsername(),
+            account.getPassword(),
+            account.getBalance(),
+            account.getTransactions(),
+            authorities()
+        );
+    }
+
+    public Collection<? extends GrantedAuthority> authorities(){
+        return Arrays.asList(new SimpleGrantedAuthority("User"));
+    }
+
+    public void transferAmount(Account fromAccount, String toUsername, BigDecimal amount){
+        if(fromAccount.getBalance().compareTo(amount) < 0){
+            // .compareTo() returns -1 if first value is less than, 0 if equal, and 1 if greater
+            throw new RuntimeException("Insufficient funds");
+        }
+
+        Account toAccount = accountRepository.findByUsername(toUsername)
+                .orElseThrow(() -> new RuntimeException("Recipient account not found"));
+
+        fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
+        accountRepository.save(fromAccount);
+
+        toAccount.setBalance(toAccount.getBalance().add(amount));
+        accountRepository.save(toAccount);
+
+        Transaction debitTransaction = new Transaction(
+            amount, "Transfet Out to " + toAccount.getUsername(),
+            LocalDateTime.now(), fromAccount);        
+        transactionRepository.save(debitTransaction);
+
+        Transaction creditTransaction = new Transaction(
+            amount, "Transfer In to " + fromAccount.getUsername(),
+            LocalDateTime.now(), toAccount);
+        transactionRepository.save(creditTransaction);
+        
+    }
 }

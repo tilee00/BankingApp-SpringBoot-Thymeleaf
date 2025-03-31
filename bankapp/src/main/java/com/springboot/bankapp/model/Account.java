@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
 @Entity
-public class Account{
+public class Account implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // same with auto_increment
@@ -35,7 +36,7 @@ public class Account{
     public Account() {
     }
 
-    public Account(Collection<? extends GrantedAuthority> authorities, BigDecimal balance, String password, List<Transaction> transactions, String username) {
+    public Account(String username, String password, BigDecimal balance, List<Transaction> transactions, Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
         this.balance = balance;
         this.password = password;
