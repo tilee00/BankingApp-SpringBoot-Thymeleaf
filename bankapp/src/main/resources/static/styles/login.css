@@ -13,7 +13,7 @@ body{
 
 .login_container{
     width: 600px;
-    height: 400px;
+    padding: 0 0 20px 0;
     background-color: #fdfdfd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,3 +41,18 @@ form{
     align-items: center;
 }
 
+form table{
+    margin-top: 10px;
+}
+
+.btnLogin{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #e9e9e9;
+}

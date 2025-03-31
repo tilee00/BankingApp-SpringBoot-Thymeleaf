@@ -3,9 +3,103 @@
     <head>
         <meta charset="UTF-8">
         <title>Bank Application Dashboard</title>
-        <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="styles/dashboard.css">
+        <script>
+            // JavaScript to toggle the visibility of the deposit form
+            function toggleDepositForm() {
+                const depositForm = document.querySelector('.depositForm');
+                depositForm.style.display = depositForm.style.display === 'block' ? 'none' : 'block';
+            }
+
+            function toggleWithdrawForm() {
+                const withdrawForm = document.querySelector('.withdrawForm');
+                withdrawForm.style.display = withdrawForm.style.display === 'block' ? 'none' : 'block';
+            }
+
+            function toggleTransferForm() {
+                const transferForm = document.querySelector('.transferForm');
+                transferForm.style.display = transferForm.style.display === 'block' ? 'none' : 'block';
+            }
+
+            // JavaScript to hide the deposit form when the submit button is clicked
+            function hideDepositForm() {
+                const depositForm = document.querySelector('.depositForm');
+                depositForm.style.display = 'none';
+            }
+
+            function hideWithdrawForm() {
+                const withdrawForm = document.querySelector('.withdrawForm');
+                withdrawForm.style.display = 'none';
+            }
+
+            function hideTransferForm() {
+                const transferForm = document.querySelector('.transferForm');
+                transferForm.style.display = 'none';
+            }
+        </script>
     </head>
     <body>
-        
+        <nav>
+            <a class="companyName" href="#">ABC Bank</a>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/transactions">Transactions</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>Dashboard</h1>
+            <div class="account_info">
+                <h3>Account Information</h3>
+                <p><strong>Account Username:</strong> <span th:text="${account.username}"></span></p>
+                <p><strong>Account Balance:</strong> RM <span th:text="${account.balance}"></span></p>
+            </div>
+            <div class="transactions">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="btnTransactions">
+                                    <button class="btnDeposit" type="button" onclick="toggleDepositForm()">Deposit</button>
+                                    <div class="depositForm" style="display: none;">
+                                        <form th:action="@{/deposit}" method="post" onsubmit="hideDepositForm()">
+                                            <label for="amount">Deposit Amount:</label>
+                                            <input type="number" id="amount" name="amount" required>
+                                            <button class="btnSubmitDeposit" type="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btnTransactions">
+                                    <button class="btnWithdraw" type="button" onclick="toggleWithdrawForm()">Withdraw</button>
+                                    <div class="withdrawForm" style="display: none;">
+                                        <form th:action="@{/withdraw}" method="post" onsubmit="hideWithdrawForm()">
+                                            <label for="amount">Withdraw Amount:</label>
+                                            <input type="number" id="amount" name="amount" required>
+                                            <button type="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btnTransactions">
+                                    <button class="btnTransfer" type="button" onclick="toggleTransferForm()">Transfer</button>
+                                    <div class="transferForm" style="display: none;">
+                                        <form th:action="@{/transfer}" method="post" onsubmit="hideTransferForm()">
+                                            <label for="recipient">Recipient Username:</label>
+                                            <input type="text" id="recipient" name="toUsername" required>
+                                            <label for="amount">Transfer Amount:</label>
+                                            <input type="number" id="amount" name="amount" required>
+                                            <button type="submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </body>
 </html>

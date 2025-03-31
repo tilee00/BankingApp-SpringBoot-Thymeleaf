@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Bank Application Login</title>
-        <link rel="stylesheet" href="/styles/login.css">
+        <title>Bank Application Registration</title>
+        <link rel="stylesheet" href="/styles/register.css">
     </head>
     <body>
-        <div class="login_container">
+        <div class="register_container">
             <h1>Welcome to the ABC Bank Application</h1>
-            <h2>Login</h2>
-            <form th:action="@{/login}" method="post">
+            <h2>Register</h2>
+            <form th:action="@{/register}" method="post">
                 <table>
                     <tr>
                         <td>
@@ -28,19 +28,27 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"> <!-- colspan specifies that the cell should span across two columns in the table-->
-                            <button class="btnLogin" type="submit">Login</button>
+                        <td colspan="2">
+                            <button class="btnRegister" type="submit">Register</button>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <p>Don't have an account? <a href="/register">Register Here!</a></p>
+                            <p>Already have an account? <a href="/login">Login Here!</a></p>
                         </td>
                     </tr>
                 </table>
-                <div th:if="${param.error}">
-                    <p style="color: red;">Invalid username or password.</p>
-                </div>
             </form>
+
+        </div>
+        <div th:if="${param.error}">
+            <p style="color: red;">Registration failed. Please try again.</p>
+        </div>
+        <div th:if="${param.success}">
+            <p style="color: green;">Registration successful! You can now log in.</p>
+        </div>
+        <div th:if="${param.username}">
+            <p style="color: red;">Username already exists. Please choose a different one.</p>
         </div>
     </body>
+</html>
