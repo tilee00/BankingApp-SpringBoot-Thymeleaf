@@ -1,2 +1,8 @@
 /workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/BankappApplication.java
+/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/config/SecurityConfig.java
+/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/controller/BankController.java
 /workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/model/Account.java
+/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/model/Transaction.java
+/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/repository/AccountRepository.java
+/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/repository/TransactionRepository.java
+/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/service/AccountService.java

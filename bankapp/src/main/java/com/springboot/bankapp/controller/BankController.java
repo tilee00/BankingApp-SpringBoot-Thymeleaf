@@ -84,7 +84,7 @@ public class BankController {
     }
 
     @PostMapping("/transfer")
-    public String transferAmount(@RequestParam String toUsername, @RequestParam BigDecimal amount, Mode model){
+    public String transferAmount(@RequestParam String toUsername, @RequestParam BigDecimal amount, Model model){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account fromAccount = accountService.findAccountByUsername(username);
 
