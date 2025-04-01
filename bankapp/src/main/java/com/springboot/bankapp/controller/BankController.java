@@ -20,7 +20,7 @@ public class BankController {
     private AccountService accountService;
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model){
+    public String dashboard(Model model) {
         // retrieves the username of the currently authenticated user from Spring Security's context
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountService.findAccountByUsername(username);
@@ -30,29 +30,29 @@ public class BankController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm(){
+    public String showRegistrationForm() {
         return "register";
     }
 
     // @RequestParam is used to extract query parameters from the form submission (http POST request)
     @PostMapping("/register")
-    public String registerAccount(@RequestParam String username, @RequestParam String password, Model model){
-        try{
+    public String registerAccount(@RequestParam String username, @RequestParam String password, Model model) {
+        try {
             accountService.registerAccount(username, password);
             return "redirect:/login";
-        }catch(RuntimeException e){
+        } catch (RuntimeException e) {
             model.addAttribute("error", e.getMessage());
             return "register";
         }
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @PostMapping("/deposit")
-    public String deposit(@RequestParam BigDecimal amount){
+    public String deposit(@RequestParam BigDecimal amount) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountService.findAccountByUsername(username);
         accountService.deposit(account, amount);
@@ -60,7 +60,7 @@ public class BankController {
     }
 
     @PostMapping("/withdraw")
-    public String withdraw(@RequestParam BigDecimal amount, Model model){
+    public String withdraw(@RequestParam BigDecimal amount, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountService.findAccountByUsername(username);
 
@@ -76,15 +76,17 @@ public class BankController {
     }
 
     @GetMapping("/transactions")
-    public String transactionHistory(Model model){
+    public String transactionHistory(Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountService.findAccountByUsername(username);
+
         model.addAttribute("transactions", accountService.getTransactionHistory(account));
+        model.addAttribute("account", account);
         return "transactions";
     }
 
     @PostMapping("/transfer")
-    public String transferAmount(@RequestParam String toUsername, @RequestParam BigDecimal amount, Model model){
+    public String transferAmount(@RequestParam String toUsername, @RequestParam BigDecimal amount, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account fromAccount = accountService.findAccountByUsername(username);
 

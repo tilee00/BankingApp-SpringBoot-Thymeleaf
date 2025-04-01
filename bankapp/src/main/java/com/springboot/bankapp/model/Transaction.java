@@ -1,7 +1,6 @@
 package com.springboot.bankapp.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,30 +10,30 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Transaction{
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private BigDecimal amount;
-    
+
     private String type;
-    
-    private LocalDateTime timestamp;
+
+    private String formattedTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
-    
-    public Transaction(){
+
+    public Transaction() {
 
     }
 
-    public Transaction(BigDecimal amount, String type, LocalDateTime timestamp, Account account) {
+    public Transaction(BigDecimal amount, String type, String formattedTimestamp, Account account) {
         this.amount = amount;
         this.type = type;
-        this.timestamp = timestamp;
+        this.formattedTimestamp = formattedTimestamp;
         this.account = account;
     }
 
@@ -62,14 +61,6 @@ public class Transaction{
         this.type = type;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public Account getAccount() {
         return account;
     }
@@ -78,6 +69,12 @@ public class Transaction{
         this.account = account;
     }
 
+    public String getFormattedTimestamp() {
+        return formattedTimestamp;
+    }
+
+    public void setFormattedTimestamp(String formattedTimestamp) {
+        this.formattedTimestamp = formattedTimestamp;
+    }
 
 }
-

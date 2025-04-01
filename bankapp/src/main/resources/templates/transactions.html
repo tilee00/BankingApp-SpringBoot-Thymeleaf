@@ -5,4 +5,45 @@
         <title>Bank Application Transactions</title>
         <link rel="stylesheet" href="/styles/transactions.css">
     </head>
+    <body>
+        <nav>
+            <a class="companyName" href="/dashboard">ABC Bank</a>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/transactions">Transactions</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>Dashboard</h1>
+            <div class="account_info">
+                <h3>Account Information</h3>
+                <p><strong>Account Username:</strong> <span th:text="${account.username}"></span></p>
+                <p><strong>Account Balance:</strong> RM <span th:text="${account.balance}"></span></p>
+            </div>
+            <div class="history">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Transaction Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="transaction : ${transactions}">
+                            <td th:text="${transaction.id}"></td>
+                            <td th:text="${transaction.type}"></td>
+                            <td th:text="'RM ' + ${transaction.amount}"></td>
+                            <td th:text="${transaction.formattedTimestamp}"></td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(transactions)}">
+                            <td colspan="4">No transactions available.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
 </html>
