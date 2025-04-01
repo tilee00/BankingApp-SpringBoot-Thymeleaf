@@ -34,13 +34,17 @@
                     </tr>
                     <tr>
                         <td colspan="2">
+                            <div th:if="${param.error}">
+                                <p style="color: red; text-align: center;">Invalid username or password.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
                             <p>Don't have an account? <a href="/register">Register Here!</a></p>
                         </td>
                     </tr>
                 </table>
-                <div th:if="${param.error}">
-                    <p style="color: red;">Invalid username or password.</p>
-                </div>
             </form>
         </div>
     </body>

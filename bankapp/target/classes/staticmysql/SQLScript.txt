@@ -3,3 +3,6 @@ create database bankappdb;
 DELETE FROM transaction WHERE account_id=1;
 
 ALTER TABLE transaction DROP COLUMN timestamp;
+
+username: user; password: 1234;
+username: butataro; password: 1234;
