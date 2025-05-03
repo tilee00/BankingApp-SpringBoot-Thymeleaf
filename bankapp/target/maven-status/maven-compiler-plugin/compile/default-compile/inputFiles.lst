@@ -1,8 +1,8 @@
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/BankappApplication.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/config/SecurityConfig.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/controller/BankController.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/model/Account.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/model/Transaction.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/repository/AccountRepository.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/repository/TransactionRepository.java
-/workspaces/SpringBootProject-BankingApp/bankapp/src/main/java/com/springboot/bankapp/service/AccountService.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\BankappApplication.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\config\SecurityConfig.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\controller\BankController.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\model\Account.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\model\Transaction.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\repository\AccountRepository.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\repository\TransactionRepository.java
+C:\Users\fgcte\Documents\0-tilee\3-code_learning\BankingApp-SpringBoot-Thymeleaf\bankapp\src\main\java\com\springboot\bankapp\service\AccountService.java
