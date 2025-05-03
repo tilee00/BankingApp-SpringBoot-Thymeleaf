@@ -1,6 +1,7 @@
 # SpringBootProject-BankingApp
 
 > Youtube tutorials from Code With GoldenCat
+> A simple banking app
 
 > Login Page
 ![image](https://github.com/user-attachments/assets/9b9bc944-3cf4-46a0-a917-069f903a212c)
@@ -11,5 +12,5 @@
 > Dashboard (Transfer Money to someone)
 ![image](https://github.com/user-attachments/assets/e4c7cbaa-0169-408c-8618-ddadd6c4e76e)
 
-> Transactions
+> Transactions History
 ![image](https://github.com/user-attachments/assets/b62506e7-a6d2-4e24-8c48-8255b54701e5)
